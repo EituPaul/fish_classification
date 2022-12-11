@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "702132477622",
+    "project_id": "fish-classification-159f1",
+    "storage_bucket": "fish-classification-159f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:702132477622:android:f502bc2b0dec8ff1771017",
+        "android_client_info": {
+          "package_name": "com.example.fishclassification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "702132477622-m9u62oft826j39n35ujtenberkfvbloc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fishclassification",
+            "certificate_hash": "a0150ea17417a36d72066e45214b230c8ea522e6"
+          }
+        },
+        {
+          "client_id": "702132477622-jt7ja7p7977melgk2hn9obvpqu2rd8v9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBAwCJo28i2nJ3xundMgD7s0HaSaID1No"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "702132477622-jt7ja7p7977melgk2hn9obvpqu2rd8v9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

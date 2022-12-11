@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+
+       <item android:id="@+id/profile"
+
+         android:title="Profile"
+
+        />
+
+    <item android:title="Contact Us "
+        android:id="@+id/contact"/>
+    <item android:title="About Us"
+        android:id="@+id/about_us"/>
+    <item android:title="Rate Us"
+        android:id="@+id/rate_us"></item>
+   <item android:title="Admin"
+     android:id="@+id/admin"></item>
+
+
+</menu>

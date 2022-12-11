@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signupbackground"
+        >
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/textView3"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="36dp"
+            android:background="#1E7EE5"
+            android:gravity="center"
+            android:src="@drawable/signuplogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.525"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/circularImage" />
+
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="260dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/edittext_border_zit"
+            android:drawableLeft="@drawable/ic_baseline_account_box_24"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:paddingStart="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.582"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"></EditText>
+
+        <EditText
+            android:id="@+id/emailid"
+            android:layout_width="260dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_border_zit"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.582"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="260dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_border_zit"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textVisiblePassword"
+            android:paddingStart="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.582"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailid" />
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:checked="true"
+            android:clickable="true"
+            android:ems="10"
+            android:text="Show Password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.356"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password" />
+
+        <EditText
+            android:id="@+id/contact"
+            android:layout_width="260dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_border_zit"
+            android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
+            android:ems="10"
+            android:hint="Contact No."
+            android:inputType="phone"
+            android:paddingStart="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.585"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/checkbox" />
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="260dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/edittext_border_zit"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="Date Of Birth"
+            android:inputType="none"
+            android:paddingStart="7dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.582"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/contact" />
+
+        <Button
+            android:id="@+id/signup"
+            android:layout_width="115dp"
+            android:layout_height="46dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="#ED420C"
+            android:enabled="true"
+            android:text="Sign Up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            app:layout_constraintVertical_bias="0.007" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="115dp"
+            android:layout_height="46dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="#ED420C"
+            android:enabled="true"
+            android:text="Back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup"
+            app:layout_constraintVertical_bias="0.16" />
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="115dp"
+            android:layout_height="46dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="64dp"
+            android:backgroundTint="#ED420C"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/back"
+            app:layout_constraintVertical_bias="0.16" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
