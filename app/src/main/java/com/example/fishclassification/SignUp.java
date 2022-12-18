@@ -398,13 +398,17 @@ public class SignUp<databaseReference> extends AppCompatActivity {
                             email.getError()==null && email.getText().length()!=0 &&
                             password.getError()==null && password.getText().length()!=0 &&
                             contact.getError()==null && contact.getText().length()!=0  &&
-                            dateofbirth.getError()==null && dateofbirth.getText().length()!=0 ){
+                            dateofbirth.getError()!=null && dateofbirth.getText().length()!=0 ){
                         Log.d("Ch", "Hi");
                         newusersignUp();
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Fill up Correctly", Toast.LENGTH_LONG).show();
                     }
 
 
                 }
+
 
             }
         });
@@ -427,7 +431,7 @@ public class SignUp<databaseReference> extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "Register is Succesful", Toast.LENGTH_LONG).show();
                     saveData();
-                    Intent ii1 = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent ii1 = new Intent(getApplicationContext(), Profile.class);
                     startActivity(ii1);
                     finish();
                 } else {
@@ -455,7 +459,7 @@ public class SignUp<databaseReference> extends AppCompatActivity {
         String key =databaseReference.push().getKey();
         SignUpDataHandleForDatabase signUpDataHandleForDatabase = new SignUpDataHandleForDatabase(email1,password1,name1,contact1,dateofbirth1);
 
-        databaseReference.child(key).setValue(signUpDataHandleForDatabase);
+        databaseReference.child(mAuth.getUid()).setValue(signUpDataHandleForDatabase);
 
         Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_LONG).show();
 
