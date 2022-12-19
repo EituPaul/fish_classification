@@ -3,6 +3,7 @@ package com.example.fishclassification;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +45,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Profile extends AppCompatActivity {
     private  static final int REQUEST_CODE=101;
 
+
     EditText UserName,UserEmail,UserContact,UserDateOfBirth;
     DatabaseReference fetch_profile_data_reference;
     DatabaseReference add_image_uri_to_UserData_ref;
@@ -58,6 +61,11 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Toolbar toolbar = findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle("Profile");
         mLoadingBar = new ProgressDialog(this);
         profile_image =findViewById(R.id.profileLogo);
         savebtn = findViewById(R.id.btnSave);

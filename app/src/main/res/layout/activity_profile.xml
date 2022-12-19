@@ -18,6 +18,7 @@
             android:layout_height="0dp"
             android:layout_margin="40dp"
             app:cardCornerRadius="20dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +34,6 @@
                     android:layout_height="140dp"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/profile_logo"
-                    app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:backgroundTint="@color/teal_200"
-                    android:text="Update Profile"
+                    android:text="Set Profile"
                     app:layout_constraintEnd_toEndOf="@+id/inputUserContact"
                     app:layout_constraintStart_toStartOf="@+id/inputUserContact"
                     app:layout_constraintTop_toBottomOf="@+id/inputUserContact" />
