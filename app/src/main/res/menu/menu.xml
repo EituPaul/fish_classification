@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/first">
+        <item  android:id="@+id/home"
+            android:title="Home"  android:icon="@drawable/ic_baseline_home_24">  </item>
+        <item  android:id="@+id/classify"
+            android:title="Classify"  android:icon="@drawable/ic_baseline_image_search_24">  </item>
+        <item  android:id="@+id/profile"
+            android:title="Profile"  android:icon="@drawable/ic_baseline_person_24">  </item>
+        <item  android:id="@+id/location"
+            android:title="Location"  android:icon="@drawable/ic_baseline_location_on_24">  </item>
+        <item  android:id="@+id/logout"
+            android:title="Logout"  android:icon="@drawable/ic_baseline_security_24">  </item>
 
-    >
+
+    </group>
 
 
-       <item android:id="@+id/profile"
 
-         android:title="Profile"
 
-        />
-
-    <item android:title="Contact Us "
-        android:id="@+id/contact"/>
-    <item android:title="About Us"
-        android:id="@+id/about_us"/>
-    <item android:title="Rate Us"
-        android:id="@+id/rate_us"></item>
-   <item android:title="Admin"
-     android:id="@+id/admin"></item>
 
 
 </menu>
