@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="192dp"
-    android:background="@color/teal_200">
+    android:background="@drawable/app_bar_back">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profileImageHeader"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/profile_logo"
+        android:src="@drawable/blue_profile_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
 
@@ -23,6 +23,7 @@
         android:text="Username"
         android:textStyle="bold"
         android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/profileImageHeader"
         app:layout_constraintStart_toStartOf="@+id/profileImageHeader"
         app:layout_constraintTop_toBottomOf="@+id/profileImageHeader" />

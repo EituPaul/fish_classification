@@ -182,7 +182,7 @@ public class Profile extends AppCompatActivity {
 
                                                         mLoadingBar.dismiss();
                                                         Toast.makeText(getApplicationContext(), "Setup profile completed", Toast.LENGTH_LONG).show();
-                                                        Intent intent = new Intent(Profile.this, MainActivity.class);
+                                                        Intent intent = new Intent(Profile.this, HomeActivity.class);
                                                         startActivity(intent);
                                                         finish();
                                                     }

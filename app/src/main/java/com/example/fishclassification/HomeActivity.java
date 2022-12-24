@@ -15,8 +15,11 @@ import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.fishclassification.Utils.Comments;
 import com.example.fishclassification.Utils.Posts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -50,9 +54,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -66,7 +72,7 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
     NavigationView navigationView;  
     FirebaseAuth mAuth_for_navigation_user_mail;
     FirebaseUser mUser;
-    DatabaseReference mUserReference,postRef;
+    DatabaseReference mUserReference,postRef,likeRef,dislikeRef,commentRef;//added dislike ref
     String profileImageUrlV ,userNameV;//for fetch from database
     CircleImageView profileImageViewHeader;
     TextView userNameHeader;
@@ -78,6 +84,9 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
     ProgressDialog mloadingbar;
     StorageReference postImageStorageRef;
     RecyclerView recyclerView;
+    //for comment fetch
+    //FirebaseRecyclerOptions<Comments>CommentOption;//ekhane Comments  holo class
+    FirebaseRecyclerAdapter<Comments,CommenViewHolder>CommentAdapter;
 
 
     //these are for fetching posts data from database
@@ -109,6 +118,7 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
         recyclerView = findViewById(R.id.recyclerViewPosts);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
         //Initialize firebase auth and database
 
         mAuth_for_navigation_user_mail = FirebaseAuth.getInstance();
@@ -119,8 +129,13 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
         //add image to firebase storage
         postImageStorageRef = FirebaseStorage.getInstance().getReference().child("PostImages");
 
+       //for like and like count
+        likeRef = FirebaseDatabase.getInstance().getReference().child("Likes");
+        // //for dislike and dislike count
+        dislikeRef = FirebaseDatabase.getInstance().getReference().child("disLikes");
 
-
+      //for comment and comment cout
+        commentRef = FirebaseDatabase.getInstance().getReference().child("Comments");
 
         //for navdrawer
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -161,15 +176,146 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
     //for fetching post data to recyclerview
     private void loadPost() {
 
-        FirebaseRecyclerOptions options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(postRef,Posts.class).build(); //chamge from video
+        FirebaseRecyclerOptions <Posts>options = new FirebaseRecyclerOptions.Builder<Posts>().setQuery(postRef,Posts.class).build(); //chamge from video
         adapter = new FirebaseRecyclerAdapter<Posts, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull Posts model) {
+                final String postKey = getRef(position).getKey();//posts er j id te data pathabe seta
                 holder.postDesc.setText(model.getPostDesc());
-                holder.timeAgo.setText(model.getPostDate());
+               //calculate time ago from date time
+                String timeAgo = calculateTimeAgo(model.getPostDate());
+                holder.timeAgo.setText(timeAgo);
                 holder.username.setText(model.getUserName());
                 Picasso.get().load(model.getPostImageUri()).into(holder.postImage);
                 Picasso.get().load(model.getUserProfileImage()).into(holder.profileImage);
+                //like count
+                holder.countLikes(postKey,mUser.getUid(),likeRef);
+                //dislike count
+                holder.countDislikes(postKey,mUser.getUid(),dislikeRef);
+
+                //adding like  feature
+                holder.likeImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //likeRef er mddhe j id(node) te data pathabe seta child er mddhe thakbe
+                        likeRef.child(postKey).child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //if user already like this post we remove that like
+                                if(snapshot.exists())
+                                {
+                                    likeRef.child(postKey).child(mUser.getUid()).removeValue();
+                                    holder.likeImage.setColorFilter(Color.GRAY);
+                                  adapter.notifyDataSetChanged();//ekhane
+                                }
+                                else{
+                                    // start  myLogic jodi dislike kore user taile  like click korar somoy dislike k remove korbe
+                                    dislikeRef.child(postKey).child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            //if user already like this post we remove that like
+                                            if(snapshot.exists())
+                                            {
+                                                dislikeRef.child(postKey).child(mUser.getUid()).removeValue();
+                                                holder.dislikeImage.setColorFilter(Color.GRAY);
+                                                adapter.notifyDataSetChanged();//ekhane
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(HomeActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+                                    // end  myLogic jodi dislike kore user taile  like click korar somoy dislike k remove korbe
+                                //if user not like this post yet, we add that like
+                                    likeRef.child(postKey).child(mUser.getUid()).setValue("like");
+                                    holder.likeImage.setColorFilter(Color.BLUE);
+                                  adapter.notifyDataSetChanged();//ekhane first e adapter chara disilam
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(HomeActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                });
+
+                //adding dislike feature
+                holder.dislikeImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //dislikeRef er mddhe j id(node) te data pathabe seta child er mddhe thakbe
+                        dislikeRef.child(postKey).child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                //if user already like this post we remove that like
+                                if(snapshot.exists())
+                                {
+                                    dislikeRef.child(postKey).child(mUser.getUid()).removeValue();
+                                    holder.dislikeImage.setColorFilter(Color.GRAY);
+                                    adapter.notifyDataSetChanged();//ekhane
+                                }
+                                else{
+                                    //eta hocche jodi like diye thak user tahole dislike dite gele like k gray (remove kore) dibe
+                                    likeRef.child(postKey).child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            //if user already like this post we remove that like
+                                            if(snapshot.exists())
+                                            {
+                                                likeRef.child(postKey).child(mUser.getUid()).removeValue();
+                                                holder.likeImage.setColorFilter(Color.GRAY);
+                                                adapter.notifyDataSetChanged();//ekhane
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(HomeActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+                                    //if user not like this post yet, we add that like
+                                    dislikeRef.child(postKey).child(mUser.getUid()).setValue("dislike");
+                                    holder.dislikeImage.setColorFilter(Color.RED);
+                                    adapter.notifyDataSetChanged();//ekhane first e adapter chara disilam
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(HomeActivity.this, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                });
+                    //comment send
+                holder.CommentSend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // get data from input Field
+                        String comment = holder.inputComment.getText().toString();
+                        if(comment.isEmpty()){
+                            Toast.makeText(HomeActivity.this, "Please write something", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            addComment(holder,postKey,commentRef,mUser.getUid(),comment);
+                        }
+
+                    }
+                });
+                //comment fetch
+                LoadComment(postKey);
 
             }
 
@@ -184,6 +330,79 @@ public class HomeActivity extends AppCompatActivity  implements NavigationView.O
         adapter.startListening();
         recyclerView.setAdapter(adapter);
 
+
+    }
+    //comment fetch to recycler view through single_view_comment_layout
+    private void LoadComment(String postKey) {
+        MyViewHolder.recyclerView.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+        Log.d("innerLoad","hei");
+
+        FirebaseRecyclerOptions CommentOption = new FirebaseRecyclerOptions.Builder<Comments>().setQuery(commentRef.child(postKey),Comments.class).build();
+        CommentAdapter = new FirebaseRecyclerAdapter<Comments, CommenViewHolder>(CommentOption) {
+
+            @Override
+            protected void onBindViewHolder(@NonNull CommenViewHolder holder, int position, @NonNull Comments model) {
+               Picasso.get().load(model.getProfileImageUrl()).into(holder.profileImage);
+               holder.username.setText(model.getUserName());
+               holder.comments.setText(model.getComment());
+                Log.d("BinnerLoad","hi");
+
+
+
+            }
+
+            @NonNull
+            @Override
+            public CommenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_view_comment,parent,false);
+                Log.d("BinnerLoad","hi");
+                return new CommenViewHolder(view);
+
+            }
+        };
+
+        CommentAdapter.startListening();
+        MyViewHolder.recyclerView.setAdapter(CommentAdapter);
+    }
+    //comment send
+    private void addComment(MyViewHolder holder, String postKey, DatabaseReference commentRef, String uid, String comment) {
+        HashMap hashMap = new HashMap();
+        hashMap.put("UserName",userNameV);
+        hashMap.put("ProfileImageUrl",profileImageUrlV);
+        hashMap.put("comment",comment);
+        //each postkey (each post) er jnno many user(userid wise) comment jabe
+        commentRef.child(postKey).child(uid).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+            @Override
+            public void onComplete(@NonNull Task task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(HomeActivity.this, "Comment added", Toast.LENGTH_SHORT).show();
+                    adapter.notifyDataSetChanged();
+                    holder.inputComment.setText(null);
+                }
+                else{
+                    Toast.makeText(HomeActivity.this, ""+task.getException().toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+    ////calculate time ago from post date firebase
+    private String calculateTimeAgo(String postDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
+        try {
+            long time = sdf.parse(postDate).getTime();
+            long now = System.currentTimeMillis();
+            CharSequence ago =
+
+                    DateUtils.getRelativeTimeSpanString(time, now, DateUtils.MINUTE_IN_MILLIS);
+              return ago+"";
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
 
     }
 
