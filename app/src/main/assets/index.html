@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+<button id="share">Share my location</button>
+<pre id="result"></pre>
+<!-- <div><iframe
+    src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14759.6765422959!2d91.840052!3d22.356682!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1674400584001!5m2!1sen!2sbd"
+    width="400" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"></iframe></div> -->
+
+<script>
+
+        const http = new XMLHttpRequest()
+        let result = document.querySelector("#result")
+        document.querySelector("#share").addEventListener
+            (
+                "click", () => {
+                    findMyCoordinates()
+                })
+        function findMyCoordinates() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        //console.log(position.coords.latitude,position.coords.longitude);
+                        const bdcAPI = `https://api.bigdatacloud.net/data/reverse-geocode-client?
+                        latitude=${position.coords.latitude}&longitude=${position.coords.longitude}`
+                        getAPI(bdcAPI)
+                    }, (err) => {
+                        alert(err.message)
+                    }
+                )
+            }
+            else {
+                alert("geolocation api is not supported by your browser")
+            }
+        }
+
+        function getAPI(bdcAPI) {
+            http.open("Get", bdcAPI)
+            http.send()
+            http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                   // result.innerHTML = this.responseText
+                    const results = JSON.parse(this.responseText)
+                    result.innerHTML = results.locality
+                    console.log(results.locality)
+
+
+                }
+
+            }
+        }
+
+
+    </script>
+
+
+<div>
+    <iframe
+            src="https://www.google.com/maps?&q=+${results.locality}&output=embed"
+            width="800" height="600" style="border:5;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+
+
+</body>
+</html>

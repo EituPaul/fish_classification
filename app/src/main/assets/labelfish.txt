@@ -1,0 +1,9 @@
+0 Boal
+1 Koi
+2 Ilish
+3 Katla
+4 Pabda
+5 Pangas
+6 Rui
+7 Taki
+8 Telapiya

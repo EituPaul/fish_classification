@@ -1,3 +1,53 @@
 <resources>
     <string name="app_name">Fish Classification</string>
+    <string name="btn1_text">You have to login first</string>
+    <string name="btn2_text">In this app you can post ,like, comment</string>
+    <string name="btn3_text">You can also classify fish class</string>
+
+    <string-array name="array_indian_state">
+        <item>Select your division</item>
+        <item>Chittagong</item>
+        <item>Dhaka</item>
+        <item>Rajshahi</item>
+
+    </string-array>
+
+    <string-array name="array_default_districts">
+        <item>Select your district</item>
+
+    </string-array>
+    <string-array name="Dhaka">
+        <item>Motijheel</item>
+        <item>Mirpur</item>
+        <item>Gulsan</item>
+        <item>Banani</item>
+        <item>Shahbag</item>
+        <item>Banani</item>
+
+
+    </string-array>
+    <string-array name="Chittagong">
+
+        <item>Raozan</item>
+        <item>Karnaphuli</item>
+        <item>Anwara</item>
+        <item>Patiya</item>
+        <item>Hathhazari</item>
+        <item>Mirsharai</item>
+        <item>Rangunia</item>
+        <item>Boalkhali</item>
+    </string-array>
+    <string-array name="Rajshahi">
+
+        <item>Bagmara</item>
+        <item>Paba</item>
+        <item>Chargat</item>
+        <item>Durghapur</item>
+        <item>Godagari</item>
+        <item>Mohanpur</item>
+        <item>Bagha</item>
+        <item>Puthia</item>
+
+    </string-array>
+
 </resources>

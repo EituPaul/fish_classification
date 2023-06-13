@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/signupbackground"
+    tools:context=".TipsInYoutubeVideo">
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:videoId="gXWXKjR-qII"
+        app:autoPlay="false"
+        app:handleNetworkEvents="true"
+        android:layout_marginTop="20sp"
+
+        />
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:videoId="gXWXKjR-qII"
+        app:autoPlay="false"
+        app:handleNetworkEvents="true"
+        android:layout_marginTop="20sp"
+
+
+        />
+</LinearLayout>

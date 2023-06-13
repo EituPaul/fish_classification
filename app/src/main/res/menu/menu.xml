@@ -8,12 +8,22 @@
             android:title="Classify"  android:icon="@drawable/ic_baseline_image_search_24">  </item>
         <item  android:id="@+id/profile"
             android:title="Profile"  android:icon="@drawable/ic_baseline_person_24">  </item>
+        <item  android:id="@+id/video"
+            android:title="Tips"  android:icon="@drawable/ic_baseline_video_library_24">  </item>
+
+
         <item  android:id="@+id/location"
             android:title="Location"  android:icon="@drawable/ic_baseline_location_on_24">  </item>
 
 
     </group>
     <group   android:id="@+id/second">
+        <item  android:id="@+id/about_us"
+            android:title="About Us"  android:icon="@drawable/ic_baseline_location_on_24">  </item>
+
+        <item  android:id="@+id/userlist"
+            android:title="Userlist"  android:icon="@drawable/ic_baseline_person_24">  </item>
+
         <item  android:id="@+id/logout"
             android:title="Logout"  android:icon="@drawable/ic_baseline_security_24">  </item>
 

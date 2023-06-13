@@ -1,206 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:orientation="vertical"
+    tools:context=".HomeActivity"
+    android:layout_height="match_parent">
+     <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:layout_marginTop="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+            app:cardCornerRadius="15dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_height="wrap_content">
+   <androidx.cardview.widget.CardView
+       android:layout_width="match_parent"
+
+       android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal"
+        android:padding="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileImagePost"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="28dp"
-                android:src="@drawable/blue_profile_logo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+                android:src="@drawable/blue_profile_logo"></de.hdodenhof.circleimageview.CircleImageView>
 
             <TextView
                 android:id="@+id/TextProfileUsernamePost"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
                 android:text="username"
                 android:textColor="@color/blue"
                 android:textSize="25sp"
-                android:textStyle="bold"
+                android:padding="5dp"
+                android:textStyle="bold" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/deletebtnpost"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.069"
-                app:layout_constraintStart_toEndOf="@+id/profileImagePost"
-                app:layout_constraintTop_toTopOf="@+id/profileImagePost" />
+                android:padding="8dp"
+                android:src="@drawable/deleteiconsinglepost"></de.hdodenhof.circleimageview.CircleImageView>
 
-            <TextView
-                android:id="@+id/timeAgo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:text="0 hours ago"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@+id/TextProfileUsernamePost"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toEndOf="@+id/profileImagePost"
-                app:layout_constraintTop_toBottomOf="@+id/TextProfileUsernamePost" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/postDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="This is post description"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/timeAgo"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timeAgo" />
+        <TextView
+            android:id="@+id/timeAgo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:text="0 hours ago"
+            android:textSize="20sp" />
 
-            <ImageView
-                android:id="@+id/postImage"
-                android:layout_width="400dp"
-                android:layout_height="242dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/img_1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+    </LinearLayout>
+   </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/post_card"
+        android:layout_width="match_parent"
+        app:cardBackgroundColor="@color/white"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/postDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:fontFamily="cursive"
+            android:text="This is post description"
+             />
 
-            <ImageView
-                android:id="@+id/like"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postImage"
-                app:srcCompat="@drawable/ic_baseline_like_24" />
+        <ImageView
+            android:id="@+id/postImage"
+            android:padding="5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fish"
+             />
 
-            <TextView
-                android:id="@+id/likeCount"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:text="0"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/like"
-                app:layout_constraintStart_toEndOf="@+id/like"
-                app:layout_constraintTop_toTopOf="@+id/like"
-                app:layout_constraintVertical_bias="0.0" />
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp">
 
-            <ImageView
-                android:id="@+id/comment"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/postImage"
-                app:srcCompat="@drawable/ic_baseline_comment_24" />
-
-            <TextView
-                android:id="@+id/commentcounter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="0"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/comment"
-                app:layout_constraintEnd_toStartOf="@+id/comment"
-                app:layout_constraintTop_toTopOf="@+id/comment" />
-
-            <View
-
-                android:id="@+id/view"
-                android:layout_width="0dp"
-
-                android:layout_height="2dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/blue"
-                app:layout_constraintEnd_toEndOf="@+id/comment"
-                app:layout_constraintStart_toStartOf="@+id/like"
-                app:layout_constraintTop_toBottomOf="@+id/like" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewComments"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/view"
-                app:layout_constraintStart_toStartOf="@+id/view"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
-
-            <EditText
-                android:id="@+id/commentEdittext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/edittext_border_zit"
-                android:ems="10"
-                android:hint="Comment here"
-                android:inputType="textPersonName"
-                android:paddingStart="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="10dp"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/likesanim"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/recyclerViewComments"
-                app:layout_constraintStart_toStartOf="@+id/recyclerViewComments"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewComments" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:scaleX="2"
+                android:scaleY="2"
 
-            <ImageView
-                android:id="@+id/sendComments"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/commentEdittext"
-                app:layout_constraintEnd_toEndOf="@+id/commentEdittext"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerViewComments"
-                app:srcCompat="@drawable/ic_baseline_send_24" />
+                app:lottie_rawRes="@raw/likesanim">
 
-            <ImageView
-                android:id="@+id/dislike_btn"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toEndOf="@+id/likeCount"
-                app:layout_constraintTop_toBottomOf="@+id/postImage"
-                app:srcCompat="@drawable/ic_baseline_dislike_24" />
-
-            <TextView
-                android:id="@+id/dislike_counter"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="16dp"
-                android:text="0"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/dislike_btn"
-                app:layout_constraintStart_toEndOf="@+id/dislike_btn"
-                app:layout_constraintTop_toTopOf="@+id/dislike_btn" />
-
-
+            </com.airbnb.lottie.LottieAnimationView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="100dp"
+            android:layout_height="50dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/dislikesanim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone"
+                app:lottie_rawRes="@raw/sadsinglepost">
+
+            </com.airbnb.lottie.LottieAnimationView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+       </LinearLayout>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+       app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="5dp"
+        app:cardElevation="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@color/white"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:background="@color/teal"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+           <ImageView
+            android:id="@+id/like"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            app:srcCompat="@drawable/ic_baseline_like_24" />
+
+                <TextView
+            android:id="@+id/likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:padding="8dp"
+            android:text="0K"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:fontFamily="cursive"
+
+            />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:background="@color/teal"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/dislike_btn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/ic_baseline_dislike_24" />
+
+                <TextView
+                    android:id="@+id/dislike_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="cursive"
+                    android:padding="8dp"
+                    android:text="0K"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+
+            android:layout_width="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:background="@color/teal"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/comment"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    app:srcCompat="@drawable/ic_baseline_comment_24" />
+
+                <TextView
+                    android:id="@+id/commentcounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:padding="8dp"
+                    android:text="0K"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue"
+                    android:fontFamily="cursive"
+
+                    />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+            <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+                android:padding="8dp"
+                android:background="@color/white"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="fill_parent"
+            android:layout_gravity="center_horizontal"
+            app:cardCornerRadius="10dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:padding="5dp"
+                app:cardBackgroundColor="@color/white"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    style="@android:attr/ratingBarStyleSmall"
+                    android:scaleX=".5"
+                    android:scaleY=".5"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="40dp"
+                    android:numStars="5"
+
+                    />
+                <TextView
+                    android:id="@+id/avgrating"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:fontFamily="cursive"
+                    android:gravity="center_vertical"
+                    android:text="0.0"
+                    android:padding="8dp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        </androidx.cardview.widget.CardView>
+     </ScrollView>
+
+</LinearLayout>
+

@@ -14,13 +14,13 @@
         android:id="@+id/proimage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/loginlogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent">
+        <!--        tools:ignore="MissingConstraints">-->
 
     </ImageView>
 
@@ -29,7 +29,7 @@
         android:id="@+id/useremailsignIn"
         android:layout_width="308dp"
         android:layout_height="49dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edittext_border_zit"
         android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="7dp"
@@ -41,13 +41,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/proimage" />
 
     <EditText
         android:id="@+id/passwordsignIn"
         android:layout_width="308dp"
         android:layout_height="49dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/edittext_border_zit"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="7dp"
@@ -75,39 +75,34 @@
         android:ems="10"
         android:text="Show Password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.295"
+        app:layout_constraintHorizontal_bias="0.165"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/passwordsignIn" />
 
     <Button
         android:id="@+id/login"
         android:layout_width="115dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_gravity="start"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
         android:backgroundTint="#ED420C"
         android:enabled="true"
         android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordsignIn"
-        app:layout_constraintVertical_bias="0.21" />
+        app:layout_constraintTop_toBottomOf="@+id/checkbox" />
 
     <TextView
         android:id="@+id/signIntextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="156dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:text="Don't signUp yet?"
         android:textColor="#FD5656"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login" />
 
@@ -115,14 +110,16 @@
         android:id="@+id/SignUpLogIn"
         android:layout_width="115dp"
         android:layout_height="46dp"
-        android:gravity="center"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="207dp"
         android:backgroundTint="#ED420C"
         android:enabled="true"
+        android:gravity="center"
         android:text="Sign Up"
         android:textColor="#54A043"
         android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/signIntextView" />
     <ProgressBar

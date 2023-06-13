@@ -12,6 +12,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 //variable
 
 public class SplashScreen extends AppCompatActivity {
@@ -46,10 +49,20 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent;
-                intent = new Intent(getApplicationContext(),LogIn.class);
-                startActivity(intent);
-                finish();
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                if(firebaseUser != null){
+
+                    Intent intent;
+                    intent = new Intent(getApplicationContext(),Home.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Intent intent;
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
 
             }
         },SPLASH_SCREEN);

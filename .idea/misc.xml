@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/comment_back_border.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/comment_back_border_new.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/edditext_border.xml" value="0.1355" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/edittext_border_zit.xml" value="0.2095" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/ic_baseline_contacts_24.xml" value="0.2095" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2095" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/ic_baseline_lock_24.xml" value="0.2095" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.2095" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_comment_24.xml" value="0.1355" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_contact_phone_24.xml" value="0.2095" />
@@ -15,19 +18,33 @@
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_like_24.xml" value="0.1355" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_post_image_24.xml" value="0.1255" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.1355" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_about_us.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_admin.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_classify_fish.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_contact_us.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_home2.xml" value="0.168" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_location.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_log_in.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_log_out.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_pagination.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_post_details.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_rate_us.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/activity_youtube_video.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/drawer_header.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/layout.xml" value="0.25" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/main_appbar.xml" value="0.24895833333333334" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/single_view_comment.xml" value="0.17962962962962964" />
-        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/single_view_post.xml" value="0.2" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/single_view_comment.xml" value="0.1" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/single_view_post.xml" value="0.152" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/spinner_layout.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/layout/userlistpagination.xml" value="0.2359375" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/menu/menu.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/menu/menu2page.xml" value="0.25" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2055" />
         <entry key="..\:/Users/user/AndroidStudioProjects/FishClassification/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2095" />
       </map>
     </option>

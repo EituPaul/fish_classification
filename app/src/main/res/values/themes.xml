@@ -16,4 +16,12 @@
     <style name="circularImage">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="ImageBorderdesign">
+        <item name="cornerSize">60%</item>
+    </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#AB2C2930</item>
+        <item name="colorControlActivated">#EAB410</item>
+    </style>
+
 </resources>

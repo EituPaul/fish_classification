@@ -219,18 +219,33 @@ public class LogIn extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 signInprogress.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    //no need to come this activity again
-                    finish();
+//                    if(mAuth.getCurrentUser().isEmailVerified()){
+//
+//                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+//                        Intent intent = new Intent(getApplicationContext(),Home.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                    else if (!mAuth.getCurrentUser().isEmailVerified()){
+//                        Toast.makeText(getApplicationContext(), "Email is not verified", Toast.LENGTH_LONG).show();
+//                    }
 
-
-
-
-                    Intent intent = new Intent(getApplicationContext(),Profile.class);
-
-
+                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(),Home.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                    finish();
+
+                    //Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                    //no need to come this activity again
+
+
+
+
+
+
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Login unsuccesful", Toast.LENGTH_LONG).show();
 

@@ -12,6 +12,7 @@ public class CommenViewHolder  extends RecyclerView.ViewHolder {
     CircleImageView profileImage;
     TextView username,comments;
 
+
     public CommenViewHolder(@NonNull View itemView) {
         super(itemView);
         profileImage = itemView.findViewById(R.id.profileImage_comment);

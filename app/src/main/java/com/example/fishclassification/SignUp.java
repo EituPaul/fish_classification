@@ -87,6 +87,7 @@ public class SignUp<databaseReference> extends AppCompatActivity {
     //auth
     ProgressBar bar;
     FirebaseAuth mAuth;
+
 //end auth
 
 
@@ -415,7 +416,7 @@ public class SignUp<databaseReference> extends AppCompatActivity {
         //end each edit text realtime check by addTextChangedListener
 
 
-    }//on create end
+    }// after on create end
     //out of on create
     //call after signup button click
     private void newusersignUp(){
@@ -429,9 +430,27 @@ public class SignUp<databaseReference> extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 bar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "Register is Succesful", Toast.LENGTH_LONG).show();
+                   Toast.makeText(getApplicationContext(), "Register is Succesful", Toast.LENGTH_LONG).show();
                     saveData();
-                    Intent ii1 = new Intent(getApplicationContext(), Profile.class);
+                    //pore add korbo
+//                   mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//
+//                            if(task.isSuccessful()){
+//                                Intent ii1 = new Intent(getApplicationContext(), Home.class);
+//                                startActivity(ii1);
+//                                finish();
+//                                Toast.makeText(SignUp.this, "Registered Successfully,Please verify your email", Toast.LENGTH_LONG).show();
+//                            }
+//                            else{
+//                                Toast.makeText(SignUp.this,task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                        }
+//                    });
+//end pore add korbo
+                    Intent ii1 = new Intent(getApplicationContext(), Home.class);
                     startActivity(ii1);
                     finish();
                 } else {
@@ -457,6 +476,7 @@ public class SignUp<databaseReference> extends AppCompatActivity {
 
 
         String key =databaseReference.push().getKey();
+
         SignUpDataHandleForDatabase signUpDataHandleForDatabase = new SignUpDataHandleForDatabase(email1,password1,name1,contact1,dateofbirth1);
 
         databaseReference.child(mAuth.getUid()).setValue(signUpDataHandleForDatabase);
